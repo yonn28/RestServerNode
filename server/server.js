@@ -21,7 +21,7 @@ app.use(require('./routes/usuario.js'));
 
 
 mongoose.set('useCreateIndex', true)
-mongoose.connect('mongodb://localhost:27017/cafe',{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false} ,(err) => {
+mongoose.connect(process.env.URLDB,{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false} ,(err) => {
   if(err) throw err;
   console.log('Base de datos ONLINE');
 });
