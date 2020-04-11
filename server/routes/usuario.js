@@ -1,11 +1,13 @@
 var express = require('express');
+var app = express();
 const bcrypt = require('bcrypt');
 const _= require('underscore')
 const Usuario  = require('../models/usuario');
-var app = express();
 
+const {verificarToken , verificarAdmin_Rol}= require('../middlewares/autenticacion')
 
-app.get('/usuario', function (req, res) {
+app.get('/usuario',verificarToken, function (req, res) {
+
     let desde = Number(req.query.desde || 0);
     let hasta = Number(req.query.hasta || 5);
     // this is for limit the fields for update Not all are for update
@@ -32,7 +34,7 @@ app.get('/usuario', function (req, res) {
 });
 
 
-app.post('/usuario', function (req, res) {
+app.post('/usuario',[verificarToken,verificarAdmin_Rol], function (req, res) {
 
     let body = req.body;
     let usuario = new Usuario({
@@ -58,7 +60,7 @@ app.post('/usuario', function (req, res) {
 
 });
 
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id',[verificarToken ,verificarAdmin_Rol], function (req, res) {
     let id = req.params.id;
     let body = _.pick(req.body,['nombre','email','img','role','estado']);
 
@@ -81,7 +83,7 @@ app.put('/usuario/:id', function (req, res) {
 });
 
 
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id',[verificarToken ,verificarAdmin_Rol], function (req, res) {
     let id = req.params.id;
 
     let body = _.pick(req.body,['estado']);

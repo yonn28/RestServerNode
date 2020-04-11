@@ -53,3 +53,5 @@ usuarioShema.methods.toJSON = function(){
 //give a more legitive message when your have an error
 usuarioShema.plugin(uniqueValidator,{message: '{PATH} deve ser unico'});
 module.exports = mongoose.model('Usuario', usuarioShema)
+
+

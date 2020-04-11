@@ -6,22 +6,21 @@ const mongoose = require('mongoose');
 
 var app = express();
 
-//for you to know what is inside the payload
+//for you to know what is inside the payload in http POST
 const bodyParser = require('body-parser')
 
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
  
-// parse application/json
+// parse application/json the body
 app.use(bodyParser.json())
 
-//look, routes that comes from the user URL
-app.use(require('./routes/usuario.js'));
+//all routes posibles
+app.use(require('./routes/index.js'));
 
-
-mongoose.set('useCreateIndex', true)
-mongoose.connect(process.env.URLDB,{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false} ,(err) => {
+// mongoose.set('useCreateIndex', true)
+mongoose.connect(process.env.URLDB,{useNewUrlParser: true,useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false} ,(err) => {
   if(err) throw err;
   console.log('Base de datos ONLINE');
 });
