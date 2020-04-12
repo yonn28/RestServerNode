@@ -5,6 +5,7 @@ var express = require('express');
 const mongoose = require('mongoose');
 
 var app = express();
+const path= require('path')
 
 //for you to know what is inside the payload in http POST
 const bodyParser = require('body-parser')
@@ -18,6 +19,9 @@ app.use(bodyParser.json())
 
 //all routes posibles
 app.use(require('./routes/index.js'));
+
+//habilitar la carpeta de public
+app.use(express.static( path.resolve(__dirname , '../public')));
 
 // mongoose.set('useCreateIndex', true)
 mongoose.connect(process.env.URLDB,{useNewUrlParser: true,useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false} ,(err) => {
