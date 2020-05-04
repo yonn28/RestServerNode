@@ -60,6 +60,7 @@ app.get('/productos/:id',verificarToken, (req, res)=>{
 
 app.get('/productos/buscar/:termino',verificarToken,(req,res)=>{
     let termino = req.params.termino;
+    // this is for making reconize paterns at the search moment
     let regex = new RegExp(termino,'i')
     Producto.find({nombre:regex})
             .populate('categoria','nombre')

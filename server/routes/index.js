@@ -13,6 +13,10 @@ app.use(require('./login.js'));
 app.use(require('./producto.js'));
 
 
+app.use(require('./uploads.js'));
+
+app.use(require('./imagenes.js'));
+
 
 
 module.exports = app
