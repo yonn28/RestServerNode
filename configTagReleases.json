@@ -1,0 +1,28 @@
+{
+    "scheme": "custom",
+    "schemeDefinition": "major.minor[.build][->alpha]",
+    "versionFile": "./package.json",
+    "files": [],
+    "rules": [
+      {
+        "branch": "master",
+        "bump": "major",
+        "reset": ["minor","build", "alpha"],
+        "trigger": "manual"
+      },
+      {
+        "branch": "staging",
+        "bump": "minor",
+        "reset": ["build", "alpha"],
+        "tag": false,
+        "trigger": "manual"
+      },
+      {
+        "branch": "qa",
+        "bump": "alpha",
+        "reset": "build",
+        "tag": false,
+        "trigger": "commit"
+      }
+    ]
+  }
