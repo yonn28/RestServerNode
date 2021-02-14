@@ -28,7 +28,7 @@ jobs:
           minor-wording:  'add,Adds'
           major-wording:  'MAJOR,cut-major'
           patch-wording:  'patch,fixes'    
-          rc-wording:     'RELEASE,alpha'
+          rc-wording:     'RELEASE, alpha'
           skip-tag:  'true'
       - name: "cat package.json"
         run: cat ./package.json
