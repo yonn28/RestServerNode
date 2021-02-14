@@ -2,11 +2,7 @@ name: "Bump Version"
 
 on:
   pull_request:
-    branches: [ master ]
-  pull_request:
-    branches: [ qa ]
-  pull_request:
-    branches: [ staging ]
+    branches: [ master , qa , staging ]
 
 jobs:
   bump-version:
