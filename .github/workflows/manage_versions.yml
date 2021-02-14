@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Checkout source code"
-        uses: "actions/checkout@v2"
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          ref: ${{ github.ref }}
+          node-version: '12'
       - name: "cat package.json"
         run: cat ./package.json
       - name: "Setup Node.js"
