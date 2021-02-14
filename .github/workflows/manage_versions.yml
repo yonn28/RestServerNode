@@ -12,7 +12,7 @@ jobs:
       - name: "Checkout source code"
         uses: "actions/checkout@v2"
       - name: "GitHub Version Bumper"
-        uses: "kaangokdemir/github-version-bumper@master"
+        uses: "kaangokdemir/github-version-bumper@v0.5.2"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_NAME: "yonny"
