@@ -15,5 +15,8 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          options-file: './configTagReleases.json'
+          scheme: semantic
+          version-file: "./package.json"
+          files: "[]" 
+          rules: '[{"trigger":"commit","branch":"qa","bump":"build"}]'
           github-token: ${{ secrets.GITHUB_TOKEN }}
