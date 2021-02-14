@@ -1,22 +1,20 @@
-name: Manage versions
+name: "Bump Version"
 
-on: [push]
-
+on:
+  push:
+    branches:
+      - "master"
 jobs:
-  bump:
+  bump-version:
+    name: "Bump Version on master"
     runs-on: ubuntu-latest
-   
     steps:
-      # Checkout action is required
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12'
-      - name: Bump Versions
-        uses: michmich112/version-bumper@master
-        with:
-          scheme: semantic
-          version-file: "./package.json"
-          files: "[]" 
-          rules: '[{"trigger":"commit","branch":"qa","bump":"build"}]'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
+      - name: "GitHub Version Bumper"
+        uses: "kaangokdemir/github-version-bumper@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_NAME: "yonny"
+          GITHUB_EMAIL: "ycnovac@unal.edu.co"
+          VERSION_FILE_NAME: "package.json"
