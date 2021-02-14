@@ -27,7 +27,7 @@ jobs:
         with:
           minor-wording:  'add,Adds,new'
           major-wording:  'MAJOR,cut-major'
-          patch-wording:  'patch,fixes'     # Providing patch-wording will override commits
+          patch-wording:  'patch,fixes'    
           rc-wording:     'RELEASE,alpha'
       - name: "cat package.json"
         run: cat ./package.json
